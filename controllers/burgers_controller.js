@@ -2,15 +2,15 @@ var express = require("express");
 
 var router = express.Router();
 
-// var burger = require("../models/JAVASCRIPT")
+var burger = require("../models/burger.js")
 
 router.get("/", function (req, res) {
-    burger.all(function (data) {
+    burger.selectAll(function (data) {
         var ob = {
             burger: data
         }
         console.log(ob);
-        // res.render()
+        res.render("index", ob);
     })
 });
 
@@ -34,4 +34,6 @@ router.put("/api/burger/:id", function (req, res) {
         res.json(data);
         res.status(200).end();
     })
-})
+});
+
+module.exports = router;
