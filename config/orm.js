@@ -30,7 +30,7 @@ var orm = {
             });
 
         },
-        insertOne: function (tableName, cb) {
+        insertOne: function (tableName, cols, vals, cb) {
             //INSERT INTO burgers(burger_name, devoured) VALUES("Impossible Burger", false),
                 var queryString = "INSERT INTO " + tableName;
 
@@ -41,7 +41,7 @@ var orm = {
                 // + "(burger_name) VALUES (?)";
                 console.log(queryString);
 
-                connection.query(queryString, [req.body.burger_name, false], function(err, result) {
+                connection.query(queryString, vals, function(err, result) {
                   if (err) {
                     throw err;
                   }
@@ -54,11 +54,11 @@ var orm = {
             },
 
 
-        updateOne: function (tableName, objColVals, condition, cb) {
+        updateOne: function (tableName, condition, cb) {
     
                 var queryString = "UPDATE " + tableName;
                 queryString += " SET ";
-                queryString += objToSql(objColVals);
+                queryString += "devoured = true";
                 queryString += " WHERE ";
                 queryString += condition;  //UPDATE burgers SET devoured = true WHERE id = 2;
                 // "= true WHERE id = ?";
@@ -73,3 +73,5 @@ var orm = {
             }
 
 }
+//export for the model - burger.js
+module.exports = orm;
