@@ -1,28 +1,45 @@
 <h1>Eat-Da-Burger</h1>
 
-<h2>Burgers to Devour!</h2>
 
-<ul>
-{{#each burger}}
-{{!-- {{> buger-button }}    --}}
-{{!-- this can be a partial for the button --}}
-{{/each}}
-</ul>
+
+<img class="burggif" src="https://66.media.tumblr.com/tumblr_lz8hw14V2C1r5mnvxo4_250.gif" alt"burger pic">
+
+
+<h2>Burgers to Devour!</h2>
+<ol>
+    {{#each burger}}
+    <li>
+        <p>{{this.burger_name}}</p>
+        <button data-id="{{id}}" class="devour-btn">Devour!</button>
+    </li>
+    {{/each}}
+
+</ol>
 
 
 
 
 <h2>Devoured Burgers! Urrrrp!</h2>
 
+{{#each burger}}
 
+
+{{/each}}
+
+<ol>
+    {{#each burger}}
+    {{!-- {{> buger-button }}    --}}
+    {{!-- this can be a partial for the button --}}
+    {{/each}}
+</ol>
 
 <h2>Add a Burger to devourrrr</h2>
 <form class="create-form">
 
-  <div class="form-group">
-    <label for="burg">Burger Name:</label>
-    <input type="text" id="burg" name="name">
-  </div>
+    <div class="form-group">
+        <label for="burg">Burger Name:</label>
+        <input type="text" id="burg" name="name">
+    </div>
 
-  <button type="submit">Add da burg</button>
+    <button type="submit">Add da burg</button>
 </form>
