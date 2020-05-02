@@ -1,20 +1,23 @@
+
+//make sure everything loads
 $(function () {
     //on-click event for devour button
     $(".devour-btn").on("click", function (e) {
+        e.preventDefault();
         var id = $(this).data("id");
-        var newdevstatus = $(this).data("dev");
 
-        var devBurger = {
-            devoured: newdevstatus
+        //set devoured to true/1
+        var devState = {
+            devoured: 1
         }
 
-        console.log(devBurger);
+        // console.log(devState);
 
         $.ajax("/api/burger/" + id, {
             type: "PUT",
-            data: devBurger
+            data: devState
         }).then(function () {
-            console.log("Burger is ", newdevstatus);
+            console.log("That was yummy!");
             location.reload();
         }
         )
@@ -27,7 +30,7 @@ $(function () {
 
             var newBurger = {
                 burger_name: $("#burg").val().trim(),
-                devoured: false
+                devoured: 0
             };
 
             console.log(newBurger);
@@ -37,6 +40,7 @@ $(function () {
                 data: newBurger
             }).then(function () {
                 console.log("New burger added!");
+                //reload page automatically
                 location.reload();
             }
             );

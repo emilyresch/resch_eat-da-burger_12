@@ -1,21 +1,21 @@
 var express = require("express");
-
-var router = express.Router();
-
 var burger = require("../models/burger.js")
-
+var router = express.Router();
+//build router connections and identify endpoints
 router.get("/", function (req, res) {
     burger.selectAll(function (data) {
+
+        //object to send to handlebars
         var ob = {
             burger: data
         }
-        console.log(ob);
+        // console.log(ob);
         res.render("index", ob);
     })
 });
 
 router.post("/api/burger", function (req, res) {
-    burger.insertOne(["burger_name", "devoured"], (req.body.burger_name, false), function (data) {
+    burger.insertOne(["burger_name", "devoured"], (req.body.burger_name, req.body.devoured), function (data) {
         console.log(data);
         res.json({
             id: result.insertId

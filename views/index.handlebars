@@ -6,12 +6,17 @@
 
 
 {{!-- UN-EATEN BURGERS DIv --}}
-<div class="burgerdiv" id="uneaten">
+
+<div class="row">
+
+
+<div class="burgerdiv col-sm-6" id="uneaten">
 <h2>Burgers to Devour!</h2>
 <ol>
     {{#each burger}}
     {{#unless devoured}}
-   {{> burgs/burger-block devoured=false}}
+    <span> {{this.id}}. {{this.burger_name}}</span>
+   <button type="button" class="eatburger" data-id="{{this.id}}" data-dev="{{devour}}">DEVOUR!</button>
     {{/unless}}
     {{/each}}
 
@@ -19,19 +24,22 @@
 </div>
 
 {{!-- EATEN BURGERS DIV --}}
-<div class="burgerdiv" id="eaten">
+
+<div class="burgerdiv col-sm-6" id="eaten">
 <h2>Devoured Burgers! Urrrrp!</h2>
 <ul>
-{{#each burger}}
+<ol>
+    {{#each burger}}
     {{#if devoured}}
-      {{burger_name}}
+    <span> {{this.id}}. {{this.burger_name}}</span>
     {{/if}}
-  {{/each}}
+    {{/each}}
 
+</ol>
 
 </ul>
 </div>
-
+</div>
 
 {{!-- ADD BURGER FORM --}}
 <div id="add-burg">

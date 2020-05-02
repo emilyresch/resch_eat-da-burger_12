@@ -1,23 +1,27 @@
 body {
     background-color: rgb(212, 170, 129);
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
+
+
 .burg-gif {
+
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
 }
 
-.burgerdiv {
-    float: left;
-
-}
 
 h1 {
     font-family: 'Ultra', serif;
     color: white;
     text-align: center;
+
 }
 
 h2 {
@@ -26,10 +30,14 @@ h2 {
 
 
 #add-burg {
-    text-align: center;
+  text-align: center;
 }
 
 .burg-name {
     color: rgb(158, 95, 66);
+}
+
+.col-sm-6 {
+    margin: auto;
 }
 
