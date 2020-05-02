@@ -1,11 +1,11 @@
 var connection = require("./connection");
 
-// var tableName = "burgers";
 
 var orm = {
   selectAll: function (tableName, cb) {
     var queryString = "SELECT * FROM " + tableName + ";";
 
+    console.log(queryString);
     connection.query(queryString, function (err, data) {
       if (err) throw err;
       cb(data);
@@ -40,7 +40,7 @@ var orm = {
 
     var queryString = "UPDATE " + tableName;
     queryString += " SET ";
-    queryString += "devoured = true";
+    queryString += "devoured = " + true;
     queryString += " WHERE ";
     queryString += condition; //UPDATE burgers SET devoured = true WHERE id = 2;
     // "= true WHERE id = ?";

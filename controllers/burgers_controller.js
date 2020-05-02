@@ -16,24 +16,32 @@ router.get("/", function (req, res) {
 
 router.post("/api/burger", function (req, res) {
     burger.insertOne(["burger_name", "devoured"], (req.body.burger_name, false), function (data) {
-        // console.log(data);  
+        console.log(data);
         res.json({
             id: result.insertId
         });
     })
 });
 
+
+//route to "devour" the burger on click
 router.put("/api/burger/:id", function (req, res) {
     //    console.log(req.params);
     var condition = "id = " + req.params.id;
 
-    burger.updateOne(condition, function (data) {
-        if (data.changedRows === 0) {
-            return res.status(404).end();
-        }
-        res.json(data);
-        res.status(200).end();
-    })
+    console.log(condition);
+
+    burger.updateOne({
+            devoured: req.body.devoured
+        },
+        condition,
+        function (data) {
+            if (data.changedRows === 0) {
+                return res.status(404).end();
+            }
+            // res.json(data);
+            res.status(200).end();
+        })
 });
 
 module.exports = router;

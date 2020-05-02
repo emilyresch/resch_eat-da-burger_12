@@ -1,33 +1,41 @@
 <h1>Eat-Da-Burger</h1>
 
 
+{{!-- GIF --}}
+<img class="burg-gif" src="https://66.media.tumblr.com/tumblr_lz8hw14V2C1r5mnvxo4_250.gif" alt"burger pic">
 
-<img class="burggif" src="https://66.media.tumblr.com/tumblr_lz8hw14V2C1r5mnvxo4_250.gif" alt"burger pic">
 
-
+{{!-- UN-EATEN BURGERS DIv --}}
+<div class="burgerdiv" id="uneaten">
 <h2>Burgers to Devour!</h2>
 <ol>
     {{#each burger}}
-    <li>
-        <p class="burg-name" data-dev="false">{{this.burger_name}}</p>
-        <button data-id="{{id}}" class="devour-btn">Devour!</button>
-    </li>
+    {{#unless devoured}}
+   {{> burgs/burger-block devoured=false}}
+    {{/unless}}
     {{/each}}
 
 </ol>
+</div>
 
-
-
-
+{{!-- EATEN BURGERS DIV --}}
+<div class="burgerdiv" id="eaten">
 <h2>Devoured Burgers! Urrrrp!</h2>
+<ul>
+{{#each burger}}
+    {{#if devoured}}
+      {{burger_name}}
+    {{/if}}
+  {{/each}}
 
 
-    {{#each burger}}
-    <p class="burg-name" data-dev="true">{{this.burger_name}}</p>
-    {{!-- {{> buger-button }}    --}}
-    {{/each}}
+</ul>
+</div>
 
-<h2>Add a Burger to devourrrr</h2>
+
+{{!-- ADD BURGER FORM --}}
+<div id="add-burg">
+<h2>Add a Burger to devour</h2>
 <form class="create-form">
 
     <div class="form-group">
@@ -35,5 +43,6 @@
         <input type="text" id="burg" name="name">
     </div>
 
-    <button type="submit">Add da burg</button>
+    <button type="submit" class="add-btn">Add da burg</button>
 </form>
+</div>
