@@ -9,7 +9,7 @@
 <ol>
     {{#each burger}}
     <li>
-        <p>{{this.burger_name}}</p>
+        <p class="burg-name" data-dev="false">{{this.burger_name}}</p>
         <button data-id="{{id}}" class="devour-btn">Devour!</button>
     </li>
     {{/each}}
@@ -21,17 +21,11 @@
 
 <h2>Devoured Burgers! Urrrrp!</h2>
 
-{{#each burger}}
 
-
-{{/each}}
-
-<ol>
     {{#each burger}}
+    <p class="burg-name" data-dev="true">{{this.burger_name}}</p>
     {{!-- {{> buger-button }}    --}}
-    {{!-- this can be a partial for the button --}}
     {{/each}}
-</ol>
 
 <h2>Add a Burger to devourrrr</h2>
 <form class="create-form">
