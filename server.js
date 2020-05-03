@@ -1,5 +1,5 @@
 var express = require('express');
-var bodyParser = require("body-parser");
+// var bodyParser = require("body-parser");
 var PORT = process.env.PORT || 8090;
 
 var app = express();
@@ -7,8 +7,8 @@ var app = express();
 //serve frontend css/js
 app.use(express.static('public'));
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //handlebars
 var exphbs = require("express-handlebars");

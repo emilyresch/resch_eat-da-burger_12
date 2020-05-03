@@ -6,6 +6,7 @@ var burger = require("../models/burger.js")
 
 //build router connections and identify endpoints
 router.get("/", function (req, res) {
+    console.log("got a GET");
     burger.selectAll(function (data) {
 
         //object to send to handlebars
@@ -18,7 +19,8 @@ router.get("/", function (req, res) {
 });
 
 router.post("/api/burgers", function (req, res) {
-    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function (data) {
+    console.log("got a POST");
+    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, 0], function (data) {
         console.log(data);
         res.json({
             id: result.insertId
@@ -30,16 +32,17 @@ router.post("/api/burgers", function (req, res) {
 //route to "devour" the burger on click
 router.put("/api/burgers/:id", function (req, res) {
     //    console.log(req.params);
+    console.log("got a PUT");
     var condition = "id = " + req.params.id;
 
     console.log(condition);
 
     burger.updateOne({
-            devoured: req.body.devoured
+            devoured: 1
         },
         condition,
         function (data) {
-            if (data.changedRows === 0) {
+            if (data.changedRows == 0) {
                 return res.status(404).end();
             }
             res.redirect("/");
