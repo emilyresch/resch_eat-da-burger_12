@@ -1,4 +1,4 @@
-var connection = require("./connection");
+var connection = require("./connection.js");
 
 //helpers
 //this makes column names into sql readable format. turns everything into string
@@ -16,6 +16,7 @@ function transSql(ob) {
   return arr.toString();
 }
 
+//prints questionmarks based on number of values to input
 function makeQmarks(num) {
   var arr = [];
   for (let i = 0; i < num; i++) {
@@ -31,7 +32,7 @@ var orm = {
   selectAll: function (tableName, cb) {
     var queryString = "SELECT * FROM " + tableName + ";";
 
-    console.log(queryString);
+    // console.log(queryString);
     connection.query(queryString, function (err, data) {
       if (err) throw err;
       cb(data);

@@ -13,7 +13,7 @@ $(function () {
 
         // console.log(devState);
 
-        $.ajax("/api/burger/" + id, {
+        $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: devState
         }).then(function () {
@@ -35,7 +35,7 @@ $(function () {
 
             console.log(newBurger);
 
-            $.ajax("/api/burger", {
+            $.ajax("/api/burgers", {
                 type: "POST",
                 data: newBurger
             }).then(function () {

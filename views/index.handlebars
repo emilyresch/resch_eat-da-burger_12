@@ -14,9 +14,9 @@
 <h2>Burgers to Devour!</h2>
 <ol>
     {{#each burger}}
-    {{#unless devoured}}
+    {{#unless this.devoured}}
     <span> {{this.id}}. {{this.burger_name}}</span>
-   <button type="button" class="eatburger" data-id="{{this.id}}" data-dev="{{devour}}">DEVOUR!</button>
+   <button type="button" class="devour-btn" data-id="{{this.id}}" data-dev="{{devour}}">DEVOUR!</button>
     {{/unless}}
     {{/each}}
 
@@ -28,15 +28,11 @@
 <div class="burgerdiv col-sm-6" id="eaten">
 <h2>Devoured Burgers! Urrrrp!</h2>
 <ul>
-<ol>
     {{#each burger}}
-    {{#if devoured}}
+    {{#if this.devoured}}
     <span> {{this.id}}. {{this.burger_name}}</span>
     {{/if}}
     {{/each}}
-
-</ol>
-
 </ul>
 </div>
 </div>

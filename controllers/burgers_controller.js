@@ -1,6 +1,9 @@
+//require expres, router and model
 var express = require("express");
-var burger = require("../models/burger.js")
 var router = express.Router();
+//import model for database info
+var burger = require("../models/burger.js")
+
 //build router connections and identify endpoints
 router.get("/", function (req, res) {
     burger.selectAll(function (data) {
@@ -11,11 +14,11 @@ router.get("/", function (req, res) {
         }
         // console.log(ob);
         res.render("index", ob);
-    })
+    });
 });
 
-router.post("/api/burger", function (req, res) {
-    burger.insertOne(["burger_name", "devoured"], (req.body.burger_name, req.body.devoured), function (data) {
+router.post("/api/burgers", function (req, res) {
+    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, 0], function (data) {
         console.log(data);
         res.json({
             id: result.insertId
@@ -25,20 +28,21 @@ router.post("/api/burger", function (req, res) {
 
 
 //route to "devour" the burger on click
-router.put("/api/burger/:id", function (req, res) {
+router.put("/api/burgers/:id", function (req, res) {
     //    console.log(req.params);
     var condition = "id = " + req.params.id;
 
     console.log(condition);
 
     burger.updateOne({
-            devoured: req.body.devoured
+            devoured: 1
         },
         condition,
         function (data) {
             if (data.changedRows === 0) {
                 return res.status(404).end();
             }
+            res.redirect("/");
             // res.json(data);
             res.status(200).end();
         })
