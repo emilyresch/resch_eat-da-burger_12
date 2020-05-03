@@ -18,14 +18,6 @@ _________________________
 
 _________________________
 
-### Table of Contents
-- [Installing](###Installing)
-- [Tests](###Tests)
-- [Questions](###Questions)
-- [License](##License)
-
-_________________________
-
 ### Installing
 You will need Node.js, MqSQL, Express, and Handlebars.
 
