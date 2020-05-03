@@ -41,3 +41,6 @@ h2 {
     margin: auto;
 }
 
+li {
+    list-style-type: none;
+}
