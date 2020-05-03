@@ -1,4 +1,4 @@
-var connection = require("./connection.js");
+var connection = require("../config/connection.js");
 
 //helpers
 //this makes column names into sql readable format. turns everything into string
@@ -29,7 +29,7 @@ function makeQmarks(num) {
 
 //logic of the application. houses all queries 
 var orm = {
-  selectAll: function (tableName, cb) {
+  selectAll: function(tableName, cb) {
     var queryString = "SELECT * FROM " + tableName + ";";
 
     // console.log(queryString);
@@ -39,7 +39,7 @@ var orm = {
     });
 
   },
-  insertOne: function (tableName, cols, vals, cb) {
+  insertOne: function(tableName, cols, vals, cb) {
     //INSERT INTO burgers(burger_name, devoured) VALUES("Impossible Burger", false),
     var queryString = "INSERT INTO " + tableName;
 
@@ -54,10 +54,7 @@ var orm = {
     console.log(queryString);
 
     connection.query(queryString, vals, function (err, result) {
-      if (err) {
-        throw err;
-      }
-
+      if (err) throw err;
       cb(result);
     });
     // connection.query(queryString, [burger.burger_name], function (err, data) {
@@ -66,7 +63,7 @@ var orm = {
   },
 
 
-  updateOne: function (tableName, objColVals, condition, cb) {
+  updateOne: function(tableName, objColVals, condition, cb) {
 
     var queryString = "UPDATE " + tableName;
     queryString += " SET ";
@@ -75,12 +72,9 @@ var orm = {
     queryString += condition; //UPDATE burgers SET devoured = true WHERE id = 2;
     // "= true WHERE id = ?";
     console.log(queryString);
-    connection.query(queryString, function (err, result) {
-      if (err) {
-        throw err;
-      }
-
-      cb(result);
+    connection.query(queryString, function (err, data) {
+      if (err) throw err;
+      cb(data);
     });
   }
 

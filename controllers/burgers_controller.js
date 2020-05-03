@@ -10,21 +10,19 @@ router.get("/", function (req, res) {
     burger.selectAll(function (data) {
 
         //object to send to handlebars
-        var ob = {
+        var hbsOb = {
             burger: data
         }
         // console.log(ob);
-        res.render("index", ob);
+        res.render("index", hbsOb);
     });
 });
 
 router.post("/api/burgers", function (req, res) {
     console.log("got a POST");
-    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, 0], function (data) {
+    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function (data) {
         console.log(data);
-        res.json({
-            id: result.insertId
-        });
+        res.json({ id: result.insertId });
     })
 });
 
@@ -38,15 +36,13 @@ router.put("/api/burgers/:id", function (req, res) {
     console.log(condition);
 
     burger.updateOne({
-            devoured: 1
+            devoured: req.body.devoured
         },
         condition,
         function (data) {
             if (data.changedRows == 0) {
                 return res.status(404).end();
             }
-            res.redirect("/");
-            // res.json(data);
             res.status(200).end();
         })
 });
