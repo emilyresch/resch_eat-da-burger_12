@@ -25,10 +25,9 @@ $(function () {
     $(".devour-btn").on("click", function (e) {
         e.preventDefault();
         var id = $(this).data("id");
-
         //set devoured to true/1
         var devState = {
-            devoured: 1
+            devoured: dev
         }
 
         // console.log(devState);
