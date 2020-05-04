@@ -1,7 +1,7 @@
 //make sure everything loads
 $(function () {
     //on-click event for adding burger button
-    $(".create.form").on("submit", function (e) {
+    $(".create-form").on("submit", function (e) {
         e.preventDefault();
 
         var newBurger = {
@@ -27,10 +27,10 @@ $(function () {
         var id = $(this).data("id");
         //set devoured to true/1
         var devState = {
-            devoured: dev
+            devoured: 1
         }
 
-        // console.log(devState);
+        console.log("made it" + devState);
 
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
