@@ -6,7 +6,8 @@
 Deployed here: https://guarded-coast-61271.herokuapp.com/
 
 ## Description:
-With this app, users can input burgers they would like to eat and devour them with the click of a button! 
+With this app, users can input burgers they would like to eat and devour them with the click of a button!
+Simply type the name of the burger you would like to eat, and add it to the "burgers to devour" collection. To consume the burger, click "devour!" and the burger will be added to the list of devoured burgers. Fun!
 
 ### Authors
 Emily Resch
@@ -23,9 +24,8 @@ You will need Node.js, MqSQL, Express, and Handlebars.
 
 
 ### Questions
-Currently there is an issue adding burgers to the list, but the devour button is functioning.
-
+Hungry??
 
 _____________________
 
-![profile pic](http://avatars0.githubusercontent.com/emilyresch)
+[profile pic](http://avatars0.githubusercontent.com/emilyresch)
